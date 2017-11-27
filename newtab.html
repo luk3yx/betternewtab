@@ -509,7 +509,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             cs.set = function(e) {
                 cs.innerHTML = e
             }
-            searchbox.onkeyup = ddbicon;
+            searchbox.onkeydown = searchbox.onkeyup = ddbicon;
             document.body.onkeydown = function(e) {
                 if (e.keyCode == 27 || e.keyCode == 114 || (e.ctrlKey && e.keyCode == 70)) {
                     window.location.replace("#");
@@ -557,7 +557,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
               <select name="theme" class="setting" onchange="saveSettings()">
                 <option value="default" selected="selected">Default</option>
                 <option value="black&white">Midnight</option>
-                <option value="grey">Grey</option>
+                <option value="grey&white">Dark Grey</option>
+                <option value="#eee">Light Grey</option>
                 <option value="white">White</option>
                 <option value="" disabled="disabled">Colourful</option>
                 <option value="darkgreen&white">Green</option>
