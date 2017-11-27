@@ -392,10 +392,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             applySettings();
         }
         function refocus() {
-            if (window.location.hash != "#settings") {
+            if (window.location.hash != "#settings" && window.location.hash != '#about' && window.location.hash != '#contextmenu') {
                 window.setTimeout(function() {
                     searchbox.focus()
                 }, 0)
+            } else {
+                document.body.onmousedown = document.body.onmouseup = searchbox.onblur = undefined;
+                searchbox.blur();
+                document.body.onmousedown = document.body.onmouseup = searchbox.onblur = refocus;
             }
         }
         function submitSearch(elem) {
