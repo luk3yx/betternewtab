@@ -2,6 +2,12 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
+<head>
+    <title id="title">New Tab</title>
+	<meta http-equiv="content-type" 
+		content="text/html;charset=utf-8" />
+    <link rel="icon" href="/images/favicon.png" type="image/png" />
+
 <!--
 
 # The MIT License
@@ -15,12 +21,6 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 -->
-
-<head>
-    <title id="title">New Tab</title>
-	<meta http-equiv="content-type" 
-		content="text/html;charset=utf-8" />
-    <link rel="icon" href="/images/favicon.png" type="image/png" />
     <!-- HTML5Shiv -->
     <!--[if lt IE 9]>
     <script src="https://raw.githubusercontent.com/aFarkas/html5shiv/master/dist/html5shiv.min.js" type="text/javascript"></script>
@@ -439,25 +439,25 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             return false;
         }
         function loadSettings() {
-            try {
-                n = localStorage.getItem("newtabprefs");
-                if (! n) {
-                    return false;
-                }
-                settings = JSON.parse(n);
-                keys = Object.keys(settings)
-                for (c = 0; c < keys.length; c++) {
-                    n = document.getElementsByName(keys[c])[0]
-                    if (n) {
-                        n.value = settings[keys[c]]
-                    }
-                }
+            n = localStorage.getItem("newtabprefs");
+            if (! n) {
+                setings = defaultsettings;
                 applySettings();
                 window.onhashchange = saveSettings;
-                return true;
-            } catch(e) {
+                saveSettings();
                 return false;
             }
+            settings = JSON.parse(n);
+            keys = Object.keys(settings)
+            for (c = 0; c < keys.length; c++) {
+                n = document.getElementsByName(keys[c])[0]
+                if (n) {
+                    n.value = settings[keys[c]]
+                }
+            }
+            applySettings();
+            window.onhashchange = saveSettings;
+            return true;
         }
         function select(elem) {
             btn = document.getElementById("reloadBtn")
