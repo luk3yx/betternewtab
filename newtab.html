@@ -371,7 +371,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                             if (n[0] != 'black') {
                                 css.innerHTML += '#contextmenu span:hover { background-color: #0004; }'
                             }
-                            css.innerHTML += '*:not(input):not(button):not(select) { border-color: dark' + n[0] + ' !important; }';
+                            css.innerHTML += '*:not(input):not(button):not(select):not(option) { border-color: dark' + n[0] + ' !important; }';
                             css.innerHTML += '.tooltip, .widget .box { background: #0002; }';
                             css.innerHTML += '#contextmenu { background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), ' + n[0] + '; background-position: 200px 200px; }';
                         } else {
