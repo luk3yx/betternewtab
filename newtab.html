@@ -512,6 +512,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 cs.innerHTML = e
             }
             searchbox.onkeyup = ddbicon;
+            document.body.onkeydown = function(e) {
+                if (e.keyCode == 27 || e.keyCode == 114 || (e.ctrlKey && e.keyCode == 70)) {
+                    window.location.replace("#");
+                    e.preventDefault();
+                } else if (e.keyCode == 112) {
+                    window.location.replace("#about");
+                    e.preventDefault();
+                } else if (e.keyCode == 113) {
+                    window.location.replace("#settings")
+                    e.preventDefault();
+                }
+            }
         }
     </script>
 </head>
